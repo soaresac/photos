@@ -21,4 +21,4 @@ import { SignUpService } from './signup/signup.service';
     SignUpService
   ]
 })
-export class HomeModule { } 
+export class HomeModule { }

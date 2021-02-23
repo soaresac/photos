@@ -16,7 +16,6 @@ export class HeaderComponent {
         this.user$ = userService.getuser();
     }
 
-
     logout() {
         this.userService.logout();
         this.router.navigate(['']);
