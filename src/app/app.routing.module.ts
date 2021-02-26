@@ -15,16 +15,41 @@ import { PhotolistResolver } from './photos/photo-list/photo-list.resolver';
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard], 
         children: [
-            { path: '', component: SigninComponent, canActivate: [AuthGuard]},
-            { path: 'signup', component: SignupComponent},
+            { path: '', component: SigninComponent, canActivate: [AuthGuard],
+                data: {
+                    title: 'Sign in'
+                }
+            },
+            { path: 'signup', component: SignupComponent, 
+                data: {
+                    title: 'Sign Up'
+                }
+            },
         ]
     },
-    { path: 'user/:userName', component: PhotoListComponent, resolve: {
-        photos: PhotolistResolver
-    }},
-    { path: 'p/add', component: PhotoFormComponent,  canActivate: [RequiresAutenticationGuard]},
-    {path: 'p/:photoId', component: PhotoDetailsComponent},
-    { path: 'not-found', component: NotFoundComponent},
+    { path: 'user/:userName', component: PhotoListComponent, 
+        resolve: {
+            photos: PhotolistResolver
+        },
+        data: {
+            title: 'Timeline'
+        }
+    },
+    { path: 'p/add', component: PhotoFormComponent,  canActivate: [RequiresAutenticationGuard],
+        data: {
+            title: 'Photo Upload'
+        }
+    },
+    { path: 'p/:photoId', component: PhotoDetailsComponent,
+        data: {
+            title: 'Photo Detail'
+        }
+    },
+    { path: 'not-found', component: NotFoundComponent,
+        data: {
+            title: 'Not Found'
+        }
+    },
     { path: '**', redirectTo: 'not-found'}
 ];
 
